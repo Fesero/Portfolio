@@ -67,6 +67,31 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchGitHubStats();
 });
 
+// Netflix-style scroll effect
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.top-nav');
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
+// Minimize/Maximize profile
+const minimizeBtn = document.querySelector('.minimize-btn');
+const compactProfile = document.querySelector('.compact-profile');
+const profileAvatar = document.querySelector('.profile-avatar-compact');
+
+minimizeBtn.addEventListener('click', () => {
+    compactProfile.classList.toggle('minimized');
+});
+
+profileAvatar.addEventListener('click', () => {
+    if (compactProfile.classList.contains('minimized')) {
+        compactProfile.classList.remove('minimized');
+    }
+});
+
 // Load carousel cards
 function loadCarousel() {
     const track = document.getElementById('carouselTrack');
@@ -87,12 +112,13 @@ function createProjectCard(project, index) {
     
     card.innerHTML = `
         <div class="card-thumbnail">
-            <img src="${project.thumbnail}" alt="${project.title}">
+            <img src="${project.thumbnail}" alt="${project.title}" 
+                 onerror="this.src='https://via.placeholder.com/400x220/1a1a1a/9147ff?text=${encodeURIComponent(project.name)}'">
         </div>
         <div class="card-content">
             <h3 class="card-title">${project.title}</h3>
             <div class="card-tech">
-                ${project.tech.slice(0, 3).map(t => `<span>${t}</span>`).join('')}
+                ${project.tech.slice(0, 4).map(t => `<span>${t}</span>`).join('')}
             </div>
         </div>
     `;
@@ -104,18 +130,14 @@ function createProjectCard(project, index) {
 function switchProject(index) {
     if (index === currentProjectIndex) return;
     
-    // Update active state
     document.querySelectorAll('.project-card').forEach((card, i) => {
         card.classList.toggle('active', i === index);
     });
     
     currentProjectIndex = index;
     loadProject(index);
-    
-    // Reset timer
     videoTimer = 0;
     
-    // Scroll card into view
     const cards = document.querySelectorAll('.project-card');
     cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 }
@@ -126,40 +148,29 @@ function loadProject(index) {
     const video = document.getElementById('mainVideo');
     const source = video.querySelector('source');
     
-    // Smooth transition
     video.style.opacity = '0';
     
     setTimeout(() => {
         source.src = project.video;
         video.load();
-        video.play();
+        video.play().catch(() => console.log('Autoplay prevented'));
         
         document.getElementById('currentProjectTitle').textContent = project.title;
         document.getElementById('currentProjectDesc').textContent = project.description;
         document.getElementById('currentStars').textContent = project.stars;
         document.getElementById('currentCommits').textContent = project.commits;
-        document.getElementById('viewCount').textContent = Math.floor(Math.random() * 5000) + 1000;
         
-        // Update tech badges
         const badgesContainer = document.getElementById('currentTechBadges');
         badgesContainer.innerHTML = project.tech.map(tech => 
-            `<span class="tech-badge">${tech}</span>`
+            `<span class="tech-badge">${tech.toUpperCase()}</span>`
         ).join('');
         
-        // Update buttons
         const viewLiveBtn = document.getElementById('viewLiveBtn');
         const viewCodeBtn = document.getElementById('viewCodeBtn');
         
         if (project.demo) {
             viewLiveBtn.onclick = () => window.open(project.demo, '_blank');
             viewLiveBtn.style.display = 'flex';
-            viewLiveBtn.innerHTML = `
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0z"/>
-                    <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
-                </svg>
-                ${project.id === 'tahanalyzer' ? 'View on Packagist' : 'View Live Demo'}
-            `;
         } else {
             viewLiveBtn.style.display = 'none';
         }
@@ -185,12 +196,12 @@ function setupEventListeners() {
     // Carousel controls
     document.getElementById('carouselPrev').onclick = () => {
         const track = document.getElementById('carouselTrack');
-        track.scrollBy({ left: -300, behavior: 'smooth' });
+        track.scrollBy({ left: -420, behavior: 'smooth' });
     };
     
     document.getElementById('carouselNext').onclick = () => {
         const track = document.getElementById('carouselTrack');
-        track.scrollBy({ left: 300, behavior: 'smooth' });
+        track.scrollBy({ left: 420, behavior: 'smooth' });
     };
     
     // Filter buttons
@@ -210,6 +221,10 @@ function setupEventListeners() {
         } else if (e.key === 'ArrowRight') {
             const next = (currentProjectIndex + 1) % projects.length;
             switchProject(next);
+        } else if (e.key === ' ') {
+            e.preventDefault();
+            const video = document.getElementById('mainVideo');
+            video.paused ? video.play() : video.pause();
         }
     });
 }
@@ -240,15 +255,15 @@ async function fetchGitHubStats() {
         const response = await fetch('https://api.github.com/users/Fesero/repos?per_page=100');
         const repos = await response.json();
         
-        // Update projects with real data
         for (const project of projects) {
             const repo = repos.find(r => r.name === project.name);
             if (repo) {
                 project.stars = repo.stargazers_count;
                 
-                // Fetch commits count
                 try {
-                    const commitsResponse = await fetch(`https://api.github.com/repos/Fesero/${project.name}/commits?per_page=1`);
+                    const commitsResponse = await fetch(
+                        `https://api.github.com/repos/Fesero/${project.name}/commits?per_page=1`
+                    );
                     const linkHeader = commitsResponse.headers.get('Link');
                     if (linkHeader) {
                         const match = linkHeader.match(/page=(\d+)>; rel="last"/);
@@ -260,7 +275,6 @@ async function fetchGitHubStats() {
             }
         }
         
-        // Reload current project
         loadProject(currentProjectIndex);
         loadCarousel();
         
@@ -268,6 +282,15 @@ async function fetchGitHubStats() {
         console.log('Using fallback data');
     }
 }
+
+// Live viewer count animation
+setInterval(() => {
+    const viewCount = document.getElementById('viewCount');
+    const currentCount = parseInt(viewCount.textContent);
+    const change = Math.floor(Math.random() * 20) - 10;
+    const newCount = Math.max(1000, currentCount + change);
+    viewCount.textContent = newCount;
+}, 8000);
 
 // Auto-play next project every 30 seconds
 setInterval(() => {
