@@ -10,7 +10,7 @@ const projects = [
         demo: null,
         stars: 0,
         commits: 243,
-        thumbnail: 'https://via.placeholder.com/400x200/9147ff/ffffff?text=LGV+MMORPG',
+        thumbnail: '/assets/lgv.png',
         video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
     },
     {
@@ -23,7 +23,7 @@ const projects = [
         demo: null,
         stars: 0,
         commits: 156,
-        thumbnail: 'https://via.placeholder.com/400x200/00f593/000000?text=TAH',
+        thumbnail: '/assets/tah.png',
         video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
     },
     {
@@ -36,7 +36,7 @@ const projects = [
         demo: 'https://packagist.org/packages/fesero/tahanalyzer',
         stars: 0,
         commits: 73,
-        thumbnail: 'https://via.placeholder.com/400x200/f093fb/ffffff?text=Analyzer',
+        thumbnail: '/assets/analyzer.png',
         video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
     },
     {
@@ -49,7 +49,7 @@ const projects = [
         demo: null,
         stars: 0,
         commits: 89,
-        thumbnail: 'https://via.placeholder.com/400x200/667eea/ffffff?text=Bitrix',
+        thumbnail: '/assets/bitrix.png',
         video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'
     }
 ];
