@@ -3,54 +3,54 @@ const projects = [
     {
         id: 'lgv',
         name: 'LGV',
-        title: 'LGV - Laravel Garage Management',
-        description: 'Полнофункциональная система управления автосервисом с Laravel и Vue.js',
-        tech: ['Laravel', 'Vue.js', 'MySQL', 'Blade'],
+        title: 'LGV - Browser MMORPG Wuxia',
+        description: 'Браузерная MMORPG в стиле Wuxia. Fullstack: Laravel + Go (WebSocket) + Vue.js. Microservices архитектура',
+        tech: ['Laravel', 'Go', 'Vue.js', 'WebSocket', 'Docker'],
         github: 'https://github.com/Fesero/LGV',
         demo: null,
         stars: 0,
-        commits: 127,
-        thumbnail: 'https://via.placeholder.com/400x200/9147ff/ffffff?text=LGV',
+        commits: 243,
+        thumbnail: 'https://via.placeholder.com/400x200/9147ff/ffffff?text=LGV+MMORPG',
         video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+    },
+    {
+        id: 'tah',
+        name: 'Test-Automation-Hub',
+        title: 'Test Automation Hub - Monitoring Platform',
+        description: 'Платформа для автоматизированного мониторинга и тестирования веб-сайтов. Vue.js frontend + Backend API',
+        tech: ['Vue.js', 'PHP', 'API', 'WebSockets', 'Docker'],
+        github: 'https://github.com/Fesero/Test-Automation-Hub',
+        demo: null,
+        stars: 0,
+        commits: 156,
+        thumbnail: 'https://via.placeholder.com/400x200/00f593/000000?text=TAH',
+        video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
+    },
+    {
+        id: 'tahanalyzer',
+        name: 'tahanalyzer',
+        title: 'TAH Analyzer - Composer Package',
+        description: 'Composer пакет для сбора и анализа результатов тестирования. Интеграция с Test Automation Hub',
+        tech: ['PHP', 'Composer', 'PHPUnit', 'Testing'],
+        github: 'https://github.com/Fesero/tahanalyzer',
+        demo: 'https://packagist.org/packages/fesero/tahanalyzer',
+        stars: 0,
+        commits: 73,
+        thumbnail: 'https://via.placeholder.com/400x200/f093fb/ffffff?text=Analyzer',
+        video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
     },
     {
         id: 'bitrix',
         name: 'BitrixProject',
-        title: 'Bitrix CMS Corporate Portal',
-        description: 'Корпоративный портал на базе Bitrix Framework с кастомными модулями',
-        tech: ['PHP', 'Bitrix', 'JavaScript', 'MySQL'],
+        title: 'Bitrix CMS Learning Project',
+        description: 'Учебный проект для изучения Bitrix Framework. Docker окружение для разработки с Bitrix CMS',
+        tech: ['PHP', 'Bitrix', 'Docker', 'MySQL'],
         github: 'https://github.com/Fesero/BitrixProject',
         demo: null,
         stars: 0,
         commits: 89,
         thumbnail: 'https://via.placeholder.com/400x200/667eea/ffffff?text=Bitrix',
         video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'
-    },
-    {
-        id: 'tah',
-        name: 'Test-Automation-Hub',
-        title: 'Test Automation Hub',
-        description: 'Централизованная платформа для управления автоматизированным тестированием',
-        tech: ['Vue.js', 'Node.js', 'MongoDB', 'Docker'],
-        github: 'https://github.com/Fesero/Test-Automation-Hub',
-        demo: null,
-        stars: 0,
-        commits: 156,
-        thumbnail: 'https://via.placeholder.com/400x200/f093fb/ffffff?text=TAH',
-        video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
-    },
-    {
-        id: 'tahanalyzer',
-        name: 'tahanalyzer',
-        title: 'TAH Results Analyzer',
-        description: 'Инструмент для анализа и визуализации результатов автоматизированных тестов',
-        tech: ['PHP', 'Laravel', 'Chart.js', 'Redis'],
-        github: 'https://github.com/Fesero/tahanalyzer',
-        demo: null,
-        stars: 0,
-        commits: 73,
-        thumbnail: 'https://via.placeholder.com/400x200/4facfe/ffffff?text=Analyzer',
-        video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
     }
 ];
 
@@ -114,6 +114,10 @@ function switchProject(index) {
     
     // Reset timer
     videoTimer = 0;
+    
+    // Scroll card into view
+    const cards = document.querySelectorAll('.project-card');
+    cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 }
 
 // Load project details
@@ -149,6 +153,13 @@ function loadProject(index) {
         if (project.demo) {
             viewLiveBtn.onclick = () => window.open(project.demo, '_blank');
             viewLiveBtn.style.display = 'flex';
+            viewLiveBtn.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0z"/>
+                    <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
+                </svg>
+                ${project.id === 'tahanalyzer' ? 'View on Packagist' : 'View Live Demo'}
+            `;
         } else {
             viewLiveBtn.style.display = 'none';
         }
@@ -190,6 +201,17 @@ function setupEventListeners() {
             filterProjects(btn.dataset.filter);
         };
     });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            const prev = (currentProjectIndex - 1 + projects.length) % projects.length;
+            switchProject(prev);
+        } else if (e.key === 'ArrowRight') {
+            const next = (currentProjectIndex + 1) % projects.length;
+            switchProject(next);
+        }
+    });
 }
 
 // Filter projects
@@ -215,17 +237,28 @@ function filterProjects(filter) {
 // Fetch real GitHub stats
 async function fetchGitHubStats() {
     try {
-        const response = await fetch('https://api.github.com/users/Fesero/repos');
+        const response = await fetch('https://api.github.com/users/Fesero/repos?per_page=100');
         const repos = await response.json();
         
         // Update projects with real data
-        projects.forEach(project => {
+        for (const project of projects) {
             const repo = repos.find(r => r.name === project.name);
             if (repo) {
                 project.stars = repo.stargazers_count;
-                project.commits = repo.size; // Approximate
+                
+                // Fetch commits count
+                try {
+                    const commitsResponse = await fetch(`https://api.github.com/repos/Fesero/${project.name}/commits?per_page=1`);
+                    const linkHeader = commitsResponse.headers.get('Link');
+                    if (linkHeader) {
+                        const match = linkHeader.match(/page=(\d+)>; rel="last"/);
+                        if (match) project.commits = parseInt(match[1]);
+                    }
+                } catch (e) {
+                    console.log('Could not fetch commits for', project.name);
+                }
             }
-        });
+        }
         
         // Reload current project
         loadProject(currentProjectIndex);
