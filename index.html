@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fesero - Portfolio Stream</title>
+    <title>Максим Кривченко - PHP Backend Developer Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Top Navigation -->
+    <!-- Netflix-Style Navigation -->
     <nav class="top-nav">
         <div class="nav-left">
             <div class="logo">
-                <svg width="32" height="32" viewBox="0 0 32 32">
-                    <circle cx="16" cy="16" r="14" fill="#9147ff"/>
-                    <path d="M12 10h2v8h-2zm6 0h2v8h-2z" fill="white"/>
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="14" stroke="url(#gradient)" stroke-width="2"/>
+                    <path d="M12 16L15 19L20 14" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00f593"/>
+                            <stop offset="100%" style="stop-color:#9147ff"/>
+                        </linearGradient>
+                    </defs>
                 </svg>
                 <span>PORTFOLIO</span>
             </div>
@@ -28,193 +37,176 @@
         
         <div class="nav-right">
             <a href="https://github.com/Fesero" target="_blank" class="github-btn">
-                <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/>
                 </svg>
                 GitHub
             </a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Video Player -->
-        <div class="video-player" id="videoPlayer">
+    <!-- Main Content (Full Screen Video) -->
+    <div class="main-content">
+        <div class="video-player">
             <video id="mainVideo" autoplay muted loop playsinline>
-                <source src="" type="video/mp4">
+                <source src="assets/videos/lgv-demo.mp4" type="video/mp4">
             </video>
             
-            <!-- Video Overlay -->
+            <!-- Video Gradient Overlay -->
             <div class="video-gradient"></div>
             
             <!-- Top Info -->
             <div class="video-top-info">
                 <div class="live-indicator">
-                    <span class="live-dot"></span>
-                    <span class="live-text">SHOWCASE</span>
+                    <div class="live-dot"></div>
+                    <span>SHOWCASE</span>
                 </div>
                 <div class="viewer-count">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M8 3C4.5 3 1.7 5.3 1 8c.7 2.7 3.5 5 7 5s6.3-2.3 7-5c-.7-2.7-3.5-5-7-5zm0 8c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z"/>
-                        <circle cx="8" cy="8" r="1.5"/>
+                        <path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
                     </svg>
-                    <span id="viewCount">0</span>
+                    <span id="viewCount">1663</span>
                 </div>
             </div>
             
             <!-- Center Info -->
             <div class="video-center-info">
-                <h1 class="project-title" id="currentProjectTitle">Loading Project...</h1>
-                <p class="project-description" id="currentProjectDesc">Initializing...</p>
+                <h1 class="project-title" id="currentProjectTitle">LGV - Browser MMORPG Wuxia</h1>
+                <p class="project-description" id="currentProjectDesc">
+                    Браузерная MMORPG в стиле Wuxia. Fullstack: Laravel + Go (WebSocket) + Vue.js
+                </p>
             </div>
             
             <!-- Bottom Info -->
             <div class="video-bottom-info">
                 <div class="project-meta">
                     <div class="tech-badges" id="currentTechBadges">
-                        <span class="tech-badge">Loading...</span>
+                        <span class="tech-badge">LARAVEL</span>
+                        <span class="tech-badge">GO</span>
+                        <span class="tech-badge">VUE.JS</span>
+                        <span class="tech-badge">WEBSOCKET</span>
                     </div>
                     <div class="project-stats">
-                        <span class="stat">
-                            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                        <div class="stat">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/>
                             </svg>
                             <span id="currentStars">0</span>
-                        </span>
-                        <span class="stat">
-                            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878z"/>
+                        </div>
+                        <div class="stat">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z"/>
                             </svg>
-                            <span id="currentCommits">0</span> commits
-                        </span>
+                            <span id="currentCommits">243</span> commits
+                        </div>
                     </div>
                 </div>
+                
                 <div class="project-actions">
                     <button class="action-btn primary" id="viewLiveBtn">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                             <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0z"/>
                             <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
                         </svg>
-                        View Live Demo
+                        View Demo
                     </button>
                     <button class="action-btn secondary" id="viewCodeBtn">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                            <path d="M4.72 3.22a.75.75 0 011.06 1.06L2.06 8l3.72 3.72a.75.75 0 11-1.06 1.06L.47 8.53a.75.75 0 010-1.06l4.25-4.25zm6.56 0a.75.75 0 10-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 101.06 1.06l4.25-4.25a.75.75 0 000-1.06l-4.25-4.25z"/>
+                            <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z"/>
                         </svg>
                         Source Code
                     </button>
                 </div>
             </div>
             
-            <!-- Time Display -->
+            <!-- Video Timer -->
             <div class="video-time">
                 <span id="videoTimer">00:00</span>
             </div>
         </div>
+    </div>
 
-        <!-- Streamer Info (Right Sidebar) -->
-<aside class="streamer-info">
-    <div class="streamer-card">
-        <img src="https://github.com/Fesero.png" alt="Максим Кривченко" class="streamer-avatar">
-        <h3 class="streamer-name">Максим Кривченко</h3>
-        <p class="streamer-title">PHP Backend Developer</p>
-        <p class="streamer-location">📍 Тула, Россия</p>
-        <div class="subscriber-count">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-            </svg>
-            <span>26 лет</span>
+    <!-- Compact Floating Profile -->
+    <div class="compact-profile">
+        <div class="profile-header-compact">
+            <img src="https://github.com/Fesero.png" alt="Максим Кривченко" class="profile-avatar-compact">
+            <button class="minimize-btn">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="profile-body">
+            <div class="profile-name">
+                <h3>Максим Кривченко</h3>
+                <p>PHP Backend Developer</p>
+                <span class="profile-location">📍 Тула, Россия • 26 лет</span>
+            </div>
+            
+            <div class="profile-stat-row">
+                <div class="stat-chip">
+                    <span class="stat-chip-value">2.9</span>
+                    <span class="stat-chip-label">Лет опыта</span>
+                </div>
+                <div class="stat-chip">
+                    <span class="stat-chip-value">160k</span>
+                    <span class="stat-chip-label">Зарплата ₽</span>
+                </div>
+            </div>
+            
+            <div class="tech-list">
+                <span class="tech-item">PHP 8</span>
+                <span class="tech-item">1С-Битрикс</span>
+                <span class="tech-item">Laravel</span>
+                <span class="tech-item">Vue.js</span>
+                <span class="tech-item">MySQL</span>
+                <span class="tech-item">Docker</span>
+            </div>
+            
+            <div class="quick-actions">
+                <a href="mailto:fesero@bk.ru" class="quick-action-btn">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                    </svg>
+                    Email
+                </a>
+                <a href="https://t.me/feserus" class="quick-action-btn">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/>
+                    </svg>
+                    Telegram
+                </a>
+            </div>
+            
+            <div class="experience-compact">
+                <h4>💼 Текущая работа</h4>
+                <div class="exp-item">
+                    <strong>Onpeak</strong>
+                    <span>Веб-программист</span>
+                    <small>Март 2024 — Декабрь 2025</small>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <!-- Stats Grid -->
-    <div class="stats-grid">
-        <div class="stat-card">
-            <span class="stat-value">2.9</span>
-            <span class="stat-label">Лет опыта</span>
-        </div>
-        <div class="stat-card">
-            <span class="stat-value">160k</span>
-            <span class="stat-label">Зарплата ₽</span>
-        </div>
-    </div>
-    
-    <!-- Experience -->
-    <div class="experience-section">
-        <h4>💼 Опыт работы</h4>
-        <div class="experience-item">
-            <div class="experience-company">Onpeak</div>
-            <div class="experience-role">Веб-программист</div>
-            <div class="experience-period">Март 2024 — Настоящее время</div>
-        </div>
-        <div class="experience-item" style="border-left-color: #667eea;">
-            <div class="experience-company">Лаборатория разработки</div>
-            <div class="experience-role">Веб-программист</div>
-            <div class="experience-period">Июнь 2023 — Март 2024</div>
-        </div>
-    </div>
-    
-    <!-- Tech Stack -->
-    <div class="experience-section">
-        <h4>⚡ Технологии</h4>
-        <div class="tech-stack-mini">
-            <span>PHP 8</span>
-            <span>1С-Битрикс</span>
-            <span>Laravel</span>
-            <span>Vue.js</span>
-            <span>MySQL</span>
-            <span>Docker</span>
-            <span>Git</span>
-            <span>REST API</span>
-            <span>Redis</span>
-            <span>RabbitMQ</span>
-        </div>
-    </div>
-    
-    <!-- Contact Buttons -->
-    <div class="contact-buttons">
-        <a href="mailto:fesero@bk.ru" class="contact-btn">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
-            </svg>
-            fesero@bk.ru
-        </a>
-        <a href="tel:+79156863969" class="contact-btn">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328z"/>
-            </svg>
-            +7 (915) 686-3969
-        </a>
-        <a href="https://www.artstation.com/fesero" target="_blank" class="contact-btn">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
-            ArtStation
-        </a>
-    </div>
-</aside>
-
-    </main>
 
     <!-- Bottom Carousel -->
     <div class="bottom-carousel">
-        <div class="carousel-header">
-            <h2>Upnext</h2>
-            <div class="carousel-controls">
-                <button class="carousel-control prev" id="carouselPrev">
-                    <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-                    </svg>
-                </button>
-                <button class="carousel-control next" id="carouselNext">
-                    <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
-                        <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                    </svg>
-                </button>
-            </div>
+        <div class="carousel-controls">
+            <button class="carousel-control" id="carouselPrev">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>
+            </button>
+            <button class="carousel-control" id="carouselNext">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                </svg>
+            </button>
         </div>
+        
         <div class="carousel-track" id="carouselTrack">
-            <!-- Cards will be inserted here by JS -->
+            <!-- Cards будут добавлены через JS -->
         </div>
     </div>
 
