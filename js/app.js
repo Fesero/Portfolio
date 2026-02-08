@@ -10,7 +10,7 @@ const projects = [
         demo: null,
         stars: 0,
         commits: 243,
-        thumbnail: '/assets/lgv.png',
+        thumbnail: 'assets/lgv.png',
         video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
     },
     {
@@ -23,7 +23,7 @@ const projects = [
         demo: null,
         stars: 0,
         commits: 156,
-        thumbnail: '/assets/tah.png',
+        thumbnail: 'assets/tah.png',
         video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
     },
     {
@@ -36,7 +36,7 @@ const projects = [
         demo: 'https://packagist.org/packages/fesero/tahanalyzer',
         stars: 0,
         commits: 73,
-        thumbnail: '/assets/analyzer.png',
+        thumbnail: 'assets/analyzer.png',
         video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
     },
     {
@@ -49,7 +49,7 @@ const projects = [
         demo: null,
         stars: 0,
         commits: 89,
-        thumbnail: '/assets/bitrix.png',
+        thumbnail: 'assets/bitrix.png',
         video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'
     }
 ];
