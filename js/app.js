@@ -11,7 +11,7 @@ const projects = [
         stars: 0,
         commits: 243,
         thumbnail: 'assets/lgv.png',
-        video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+        video: 'assets/lgv.mp4'
     },
     {
         id: 'tah',
@@ -24,7 +24,7 @@ const projects = [
         stars: 0,
         commits: 156,
         thumbnail: 'assets/tah.png',
-        video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
+        video: 'assets/tah.mp4'
     },
     {
         id: 'tahanalyzer',
@@ -37,7 +37,7 @@ const projects = [
         stars: 0,
         commits: 73,
         thumbnail: 'assets/analyzer.png',
-        video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'
+        video: 'assets/analyzer.mp4'
     },
     {
         id: 'bitrix',
@@ -50,7 +50,7 @@ const projects = [
         stars: 0,
         commits: 89,
         thumbnail: 'assets/bitrix.png',
-        video: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4'
+        video: 'assets/bitrix.mp4'
     }
 ];
 
